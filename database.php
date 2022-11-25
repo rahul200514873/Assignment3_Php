@@ -12,7 +12,7 @@ class database
     {
         $this->con = new mysqli($this->servername, $this->username,$this->password,$this->database);
         if(mysqli_connect_error()) {
-            trigger_error("Failed to connect: " . mysqli_connect_error());
+            trigger_error("Failed to connect to server: " . mysqli_connect_error());
         }else{
             return $this->con;
         }
@@ -28,7 +28,7 @@ class database
         if ($sql==true) {
             header("Location:index.php");
         }else{
-            echo "Registration failed!";
+            echo "Registration Error!";
         }
     }
 //function to display data
@@ -43,7 +43,7 @@ class database
             }
             return $data;
         }else{
-            echo "No records were found";
+            echo "No Records found";
         }
     }
 //displaying records by using id
@@ -55,7 +55,7 @@ class database
             $row = $result->fetch_assoc();
             return $row;
         }else{
-            echo "The record is not found";
+            echo "Record not found";
         }
     }
 //used to update the record
@@ -71,7 +71,7 @@ class database
             if ($sql==true) {
                 header("Location:index.php");
             }else{
-                echo "Record not updated!";
+                echo "The Record wasn't updated!";
             }
         }
 
@@ -84,7 +84,7 @@ class database
         if ($sql==true) {
             header("Location:index.php");
         }else{
-            echo "Record wasn't deleted";
+            echo "Record not deleted";
         }
     }
 
